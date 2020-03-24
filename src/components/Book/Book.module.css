@@ -1,0 +1,19 @@
+.book {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid black;
+  flex-wrap: wrap;
+  max-width: 10vw;
+  padding: 1vh 1vw;
+  margin: 1vh 1vw;
+  justify-content: center;
+}
+
+h3 {
+  display: inherit;
+  text-align: center;
+}
+
+p {
+  text-align: justify;
+}
