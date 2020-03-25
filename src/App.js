@@ -8,23 +8,47 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: Books
+      books: Books,
+      newBookName: "",
+      newBookDescription: "",
+      newBookRead: false
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleBookAdd = this.handleBookAdd.bind(this);
   }
 
   handleClick = function(event) {
-    const dupa = this.state.books.findIndex(
+    const temp = this.state.books.findIndex(
       el => el.name === event.target.name
     );
-    console.log(dupa);
-
     let books = [...this.state.books];
-    console.log(books);
-    books[dupa]["read"] = !books[dupa]["read"];
-    console.log(books);
+    books[temp]["read"] = !books[temp]["read"];
     this.setState({ books });
-    console.log(this.state);
+  };
+
+  handleBookAdd = function(event) {
+    let tempBooks = [];
+    let temp = this.state.newBookRead;
+    if (event.target.name === "newBookRead") {
+      return this.setState({
+        newBookRead: !temp
+      });
+    } else if (event.target.name === "newBookSend") {
+      event.preventDefault();
+      tempBooks = [...this.state.books];
+      tempBooks.push({
+        name: this.state.newBookName,
+        description: this.state.newBookDescription,
+        read: this.state.newBookRead
+      });
+      return this.setState({
+        books: tempBooks
+      });
+    } else {
+      return this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
   };
 
   render() {
@@ -43,7 +67,12 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <UserInput />
+        <UserInput
+          name={this.state.newBookName}
+          description={this.state.newBookDescription}
+          read={this.state.newBookRead}
+          change={this.handleBookAdd}
+        />
         {books}
       </div>
     );
