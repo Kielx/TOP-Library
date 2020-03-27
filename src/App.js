@@ -35,12 +35,18 @@ class App extends React.Component {
       });
     } else if (event.target.name === "newBookSend") {
       event.preventDefault();
+
       tempBooks = [...this.state.books];
       tempBooks.push({
         name: this.state.newBookName,
         description: this.state.newBookDescription,
         read: this.state.newBookRead
       });
+      if (
+        this.state.books.findIndex(el => el.name === this.state.newBookName) > 0
+      ) {
+        return alert("The book name already exists");
+      }
       return this.setState({
         books: tempBooks
       });

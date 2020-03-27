@@ -2,12 +2,16 @@
   display: inline-grid;
   width: fit-content;
   border: 1px solid black;
-  max-width: 10vw;
+  max-width: 30vw;
   margin: 1vh 1vw;
   justify-content: center;
   border-radius: 10px;
   grid-template-columns: 1fr;
   grid-template-rows: minmax(3vh, 10vh) 3vh 1fr;
+  -webkit-box-shadow: 14px 17px 25px -10px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 14px 17px 25px -10px rgba(0, 0, 0, 0.6);
+  box-shadow: 10px 10px 15px -10px rgba(0, 0, 0, 0.6);
+  background-color: white;
 }
 
 .read {
@@ -34,12 +38,13 @@ h3 {
   height: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  overflow: auto;
 }
 
 p {
   grid-row: 3;
-  height: 25vh;
+  height: 20vh;
   text-align: justify;
-  overflow: scroll;
+  overflow: auto;
   padding: 10px;
 }

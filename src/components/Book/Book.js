@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Book.module.css";
 import classNames from "classnames";
+import "animate.css";
 
 const Book = props => {
   let cname = "";
@@ -10,7 +11,7 @@ const Book = props => {
     cname = "unread";
   }
   return (
-    <div className={classNames(styles["book"])}>
+    <div className={classNames(styles["book"], "animated faster fadeInRight")}>
       <h3 className={classNames(styles[cname])}>{props.name}</h3>
       <form className={classNames(styles[cname], styles["forms"])}>
         <label>Read?</label>
